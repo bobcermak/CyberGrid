@@ -4,7 +4,7 @@ import { MenuItem } from '../../atoms/MenuItem';
 import { Skeleton } from '../../atoms/Skeleton';
 import { useControllableState } from '../../../hooks/useControllableState';
 import { SidebarBrand, type SidebarBrandProps } from './SidebarBrand';
-import { SidebarFooter, SidebarHeader, SidebarList, SidebarRoot, SidebarToggle } from './Sidebar.styles';
+import { SidebarFooter, SidebarHeader, SidebarHeaderContent, SidebarList, SidebarRoot, SidebarToggle } from './Sidebar.styles';
 
 export interface SidebarItem {
   id: string;
@@ -56,12 +56,11 @@ export const Sidebar = ({
         >
           <MenuIcon size={24} />
         </SidebarToggle>
-        {!collapsed &&
-          (loading && (header || brand) ? (
-            <Skeleton width="60%" height={20} />
-          ) : (
-            header ?? (brand && <SidebarBrand {...brand} />)
-          ))}
+        {(header || brand) && (
+          <SidebarHeaderContent $hidden={collapsed}>
+            {loading ? <Skeleton width="60%" height={20} /> : (header ?? (brand && <SidebarBrand {...brand} />))}
+          </SidebarHeaderContent>
+        )}
       </SidebarHeader>
       <SidebarList>
         {items.map((item) => (

@@ -16,12 +16,12 @@ const activeStyles = css`
 export const MenuItemRoot = styled.button<MenuItemRootProps>`
   display: flex;
   align-items: center;
-  justify-content: ${({ $collapsed }) => ($collapsed ? 'center' : 'flex-start')};
-  gap: ${({ theme }) => theme.space.xs};
+  justify-content: flex-start;
+  gap: ${({ theme }) => theme.space.sm};
   width: 100%;
   min-height: 42px;
-  padding: ${({ theme, $collapsed }) =>
-    $collapsed ? theme.space.sm : `${theme.space.sm} ${theme.space.xl}`};
+  padding: ${({ theme }) => theme.space.sm};
+  overflow: hidden;
   border: ${({ theme }) => theme.borderWidths.hairline} solid transparent;
   background: transparent;
   color: ${({ theme }) => theme.colors.colorPrimary};
@@ -69,10 +69,15 @@ export const MenuItemIcon = styled.span`
   font-size: 18px;
 `;
 
-export const MenuItemLabel = styled.span`
+export const MenuItemLabel = styled.span<{ $hidden?: boolean }>`
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  opacity: ${({ $hidden }) => ($hidden ? 0 : 1)};
+  visibility: ${({ $hidden }) => ($hidden ? 'hidden' : 'visible')};
+  transition:
+    opacity ${({ theme }) => theme.transitions.base},
+    visibility ${({ theme }) => theme.transitions.base};
 `;
 export const MenuItemSkeletonLabel = styled(MenuItemLabel)`
   border-radius: ${({ theme }) => theme.radii.xs};

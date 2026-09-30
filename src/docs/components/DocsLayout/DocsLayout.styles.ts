@@ -5,6 +5,7 @@ export const Shell = styled.div`
   display: flex;
   min-height: 100vh;
   min-height: 100dvh;
+  overflow-x: clip;
   background-color: ${({ theme }) => theme.colors.bgApp};
 `;
 

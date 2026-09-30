@@ -46,7 +46,7 @@ export const MenuItem = ({
     {...rest}
   >
     {icon && <MenuItemIcon aria-hidden>{icon}</MenuItemIcon>}
-    {!collapsed && <MenuItemLabel>{children}</MenuItemLabel>}
+    <MenuItemLabel $hidden={collapsed}>{children}</MenuItemLabel>
   </MenuItemRoot>
   );
 };

@@ -8,7 +8,7 @@ export const SidebarRoot = styled.nav<{ $collapsed: boolean }>`
   display: flex;
   flex-direction: column;
   flex-shrink: 0;
-  gap: ${({ theme, $collapsed }) => ($collapsed ? theme.space.xs : theme.space.sm)};
+  gap: ${({ theme }) => theme.space.sm};
   width: ${({ $collapsed }) => ($collapsed ? SIDEBAR_WIDTH.collapsed : SIDEBAR_WIDTH.expanded)};
   max-width: 100%;
   height: 100vh;
@@ -23,7 +23,7 @@ export const SidebarRoot = styled.nav<{ $collapsed: boolean }>`
     background-color ${({ theme }) => theme.transitions.base};
 
   @media ${COMPACT_QUERY} {
-    padding-inline: ${({ $collapsed }) => ($collapsed ? '8px' : '12px')};
+    padding-inline: 8px;
     ${({ $collapsed }) => $collapsed && `width: ${SIDEBAR_WIDTH.compact};`}
   }
 `;
@@ -35,6 +35,15 @@ export const SidebarHeader = styled.div`
   min-height: 44px;
   margin-bottom: ${({ theme }) => theme.space.md};
   white-space: nowrap;
+`;
+export const SidebarHeaderContent = styled.div<{ $hidden: boolean }>`
+  flex: 1 1 auto;
+  min-width: 0;
+  opacity: ${({ $hidden }) => ($hidden ? 0 : 1)};
+  visibility: ${({ $hidden }) => ($hidden ? 'hidden' : 'visible')};
+  transition:
+    opacity ${({ theme }) => theme.transitions.base},
+    visibility ${({ theme }) => theme.transitions.base};
 `;
 export const SidebarToggle = styled.button`
   display: flex;

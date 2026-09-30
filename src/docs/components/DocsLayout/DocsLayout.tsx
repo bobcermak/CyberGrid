@@ -21,7 +21,7 @@ export interface DocsLayoutProps {
   onToggleMode: () => void;
   children: ReactNode;
 }
-const fixedSidebar = { position: 'fixed', top: 0, left: 0, zIndex: 6 } as const;
+const fixedSidebar = { position: 'fixed', top: 0, bottom: 0, left: 0, height: 'auto', zIndex: 6 } as const;
 const isNarrow = () => window.matchMedia('(max-width: 768px)').matches;
 export const DocsLayout = ({
   items,
