@@ -9,7 +9,8 @@ export const Eyebrow = styled.p`
 `;
 
 export const PageTitle = styled.h1`
-  font-size: clamp(28px, 5vw, ${({ theme }) => theme.textStyles.h1Text.fontSize});
+  font-size: clamp(24px, 5vw, ${({ theme }) => theme.textStyles.h1Text.fontSize});
+  overflow-wrap: anywhere;
   font-weight: ${({ theme }) => theme.fontWeights.semibold};
   letter-spacing: ${({ theme }) => theme.letterSpacings.wide};
   text-transform: uppercase;
@@ -17,7 +18,8 @@ export const PageTitle = styled.h1`
 `;
 
 export const SectionTitle = styled.h2`
-  font-size: ${({ theme }) => theme.textStyles.h2Text.fontSize};
+  font-size: clamp(18px, 5vw, ${({ theme }) => theme.textStyles.h2Text.fontSize});
+  overflow-wrap: anywhere;
   font-weight: ${({ theme }) => theme.fontWeights.semibold};
   letter-spacing: ${({ theme }) => theme.letterSpacings.wide};
   text-transform: uppercase;
@@ -32,7 +34,7 @@ export const SubTitle = styled.h3`
 
 export const Lead = styled.p`
   max-width: 68ch;
-  font-size: 18px;
+  font-size: clamp(16px, 4vw, 18px);
   line-height: 1.55;
   color: ${({ theme }) => theme.colors.colorPrimary};
   opacity: 0.85;
@@ -70,6 +72,7 @@ export const List = styled.ul`
 
 export const Stack = styled.div<{ $gap?: string }>`
   display: grid;
+  grid-template-columns: minmax(0, 1fr);
   gap: ${({ $gap = '16px' }) => $gap};
 `;
 

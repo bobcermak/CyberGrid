@@ -5,15 +5,18 @@ export const ChartCard = styled.div<{ $reveal?: boolean }>`
   ${({ $reveal }) => $reveal && revealStyles}
   background-color: ${({ theme }) => theme.colors.bgSurface};
   border-radius: 12px;
-  padding: 2rem;
+  container-type: inline-size;
+  padding: clamp(1rem, 5cqi, 2rem);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
   width: 100%;
 `;
 export const ChartHeader = styled.div`
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   align-items: flex-start;
-  margin-bottom: 2rem;
+  gap: 1rem;
+  margin-bottom: clamp(1rem, 5cqi, 2rem);
 `;
 export const TitleArea = styled.div`
   display: flex;
@@ -29,10 +32,12 @@ export const Title = styled.h3`
 `;
 export const Amount = styled.h1`
   color: ${({ theme }) => theme.colors.colorPrimary};
+  font-size: clamp(24px, 8cqi, ${({ theme }) => theme.textStyles.h1Text.fontSize});
+  line-height: 1.25;
 `;
 export const FilterGroup = styled.div<{ $loading?: boolean }>`
   display: flex;
-  gap: 0.5rem;
+  gap: 0.25rem;
   background-color: ${({ theme }) => theme.colors.bgApp};
   padding: 0.25rem;
   border-radius: 6px;
@@ -54,7 +59,7 @@ export const FilterButton = styled.button<{ $active?: boolean }>`
     $active ? '#E6E6F0' : theme.colors.colorPrimary};
   border: none;
   border-radius: 4px;
-  padding: 0.5rem 1rem;
+  padding: 0.5rem clamp(0.5rem, 3cqi, 1rem);
   font-family: ${({ theme }) => theme.fonts.base};
   font-size: 0.875rem;
   font-weight: 600;

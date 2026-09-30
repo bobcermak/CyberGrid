@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { SIDEBAR_WIDTH } from '../../../lib';
+import { COMPACT_QUERY, SIDEBAR_WIDTH } from '../../../lib';
 
 export const Shell = styled.div`
   display: flex;
@@ -66,7 +66,8 @@ export const Breadcrumb = styled.p`
 
 export const Content = styled.div`
   display: grid;
-  gap: 72px;
+  grid-template-columns: minmax(0, 1fr);
+  gap: clamp(48px, 8vw, 72px);
   width: 100%;
   max-width: 1120px;
   margin: 0 auto;
@@ -84,4 +85,8 @@ export const SidebarSpacer = styled.div<{ $collapsed: boolean }>`
   flex-shrink: 0;
   width: ${({ $collapsed }) => ($collapsed ? SIDEBAR_WIDTH.collapsed : SIDEBAR_WIDTH.expanded)};
   transition: width ${({ theme }) => theme.transitions.slow};
+
+  @media ${COMPACT_QUERY} {
+    width: ${({ $collapsed }) => ($collapsed ? SIDEBAR_WIDTH.compact : SIDEBAR_WIDTH.expanded)};
+  }
 `;

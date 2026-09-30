@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 export const Scroll = styled.div`
   overflow-x: auto;
+  contain: inline-size;
   border: ${({ theme }) => theme.borderWidths.hairline} solid ${({ theme }) => theme.colors.colorDisabled};
 `;
 

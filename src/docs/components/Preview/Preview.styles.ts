@@ -20,7 +20,7 @@ export const Root = styled.div<{ $resizable: boolean; $column: boolean; $minHeig
   ${({ $resizable }) =>
     $resizable &&
     css`
-      min-width: 260px;
+      min-width: min(100%, 260px);
       max-width: 100%;
       overflow: auto;
       resize: horizontal;

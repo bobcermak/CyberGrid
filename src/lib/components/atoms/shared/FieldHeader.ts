@@ -12,6 +12,7 @@ export const labelText = css`
 
 export const FieldHeader = styled.div`
   display: flex;
+  flex-wrap: wrap;
   align-items: baseline;
   justify-content: space-between;
   gap: ${({ theme }) => theme.space.sm};

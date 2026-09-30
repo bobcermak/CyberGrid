@@ -1,6 +1,7 @@
 import { styled } from 'styled-components';
 
-export const SIDEBAR_WIDTH = { expanded: '264px', collapsed: '80px' } as const;
+export const SIDEBAR_WIDTH = { expanded: '264px', collapsed: '80px', compact: '60px' } as const;
+export const COMPACT_QUERY = '(max-width: 380px)';
 export const SidebarRoot = styled.nav<{ $collapsed: boolean }>`
   position: sticky;
   top: 0;
@@ -9,6 +10,7 @@ export const SidebarRoot = styled.nav<{ $collapsed: boolean }>`
   flex-shrink: 0;
   gap: ${({ theme, $collapsed }) => ($collapsed ? theme.space.xs : theme.space.sm)};
   width: ${({ $collapsed }) => ($collapsed ? SIDEBAR_WIDTH.collapsed : SIDEBAR_WIDTH.expanded)};
+  max-width: 100%;
   height: 100vh;
   height: 100dvh;
   padding: ${({ theme }) => `${theme.space.xxxl} 18px`};
@@ -19,6 +21,11 @@ export const SidebarRoot = styled.nav<{ $collapsed: boolean }>`
   transition:
     width ${({ theme }) => theme.transitions.slow},
     background-color ${({ theme }) => theme.transitions.base};
+
+  @media ${COMPACT_QUERY} {
+    padding-inline: ${({ $collapsed }) => ($collapsed ? '8px' : '12px')};
+    ${({ $collapsed }) => $collapsed && `width: ${SIDEBAR_WIDTH.compact};`}
+  }
 `;
 export const SidebarHeader = styled.div`
   display: flex;

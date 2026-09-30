@@ -2,7 +2,8 @@ import styled from 'styled-components';
 
 export const TabList = styled.div`
   display: flex;
-  gap: 24px;
+  flex-wrap: wrap;
+  gap: 0 24px;
   border-bottom: ${({ theme }) => theme.borderWidths.hairline} solid ${({ theme }) => theme.colors.colorDisabled};
 `;
 

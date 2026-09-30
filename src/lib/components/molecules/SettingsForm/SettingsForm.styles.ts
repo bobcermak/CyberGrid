@@ -7,7 +7,8 @@ export const SettingsFormRoot = styled.form<{ $reveal?: boolean }>`
   display: grid;
   gap: ${({ theme }) => theme.space.xl};
   width: min(100%, 560px);
-  padding: ${({ theme }) => theme.space.xxl} ${({ theme }) => theme.space.xl};
+  padding: clamp(${({ theme }) => theme.space.lg}, 6%, ${({ theme }) => theme.space.xxl})
+    clamp(${({ theme }) => theme.space.md}, 5%, ${({ theme }) => theme.space.xl});
   border: ${({ theme }) => theme.borderWidths.hairline} solid ${({ theme }) => theme.colors.colorPrimary};
   background: ${({ theme }) => theme.colors.bgSurface};
   color: ${({ theme }) => theme.colors.colorPrimary};

@@ -8,6 +8,7 @@ export const DataTableRoot = styled.div<{ $reveal?: boolean }>`
   border-top: 2px solid ${({ theme }) => theme.colors.colorYellow};
   border-left: 2px solid ${({ theme }) => theme.colors.colorYellow};
   overflow-x: auto;
+  contain: inline-size;
 `;
 
 export const DataTableElement = styled.table`

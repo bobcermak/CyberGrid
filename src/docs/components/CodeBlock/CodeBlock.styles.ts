@@ -35,6 +35,7 @@ export const Pre = styled.pre`
   margin: 0;
   padding: 16px;
   overflow-x: auto;
+  contain: inline-size;
   font-family: ${({ theme }) => theme.fonts.mono};
   font-size: 13px;
   line-height: 1.65;
