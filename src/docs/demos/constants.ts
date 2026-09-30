@@ -1,0 +1,1 @@
+export const CURRENT_PRICE = 2.4;

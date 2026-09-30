@@ -1,0 +1,67 @@
+{
+  "name": "remiho-klubik-cyber-components",
+  "version": "0.1.0",
+  "description": "CyberGrid - cyberpunková knihovna komponent pro energetický dashboard (React + styled-components, light/dark, container queries).",
+  "type": "module",
+  "files": [
+    "dist"
+  ],
+  "main": "./dist/remiho-klubik-cyber-components.cjs",
+  "module": "./dist/remiho-klubik-cyber-components.js",
+  "types": "./dist/types/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/types/index.d.ts",
+      "import": "./dist/remiho-klubik-cyber-components.js",
+      "require": "./dist/remiho-klubik-cyber-components.cjs"
+    },
+    "./package.json": "./package.json"
+  },
+  "sideEffects": false,
+  "keywords": [
+    "react",
+    "styled-components",
+    "design-system",
+    "dashboard",
+    "atomic-design"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pslib-cz/2026-p4a-2026-p4a-web-styled-components-group-7.git"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "build:lib": "vite build --config vite.lib.config.ts && tsc -p tsconfig.lib.json",
+    "typecheck": "tsc -b",
+    "lint": "oxlint",
+    "preview": "vite preview",
+    "predeploy": "tsc -b && vite build --base=/2026-p4a-2026-p4a-web-styled-components-group-7/ && node -e \"require('fs').copyFileSync('dist-docs/index.html','dist-docs/404.html')\"",
+    "deploy": "gh-pages -d dist-docs --nojekyll",
+    "prepublishOnly": "npm run typecheck && npm run lint && npm run build:lib"
+  },
+  "peerDependencies": {
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "dependencies": {
+    "recharts": "^3.10.1",
+    "styled-components": "^6.1.0"
+  },
+  "devDependencies": {
+    "@phosphor-icons/react": "^2.1.10",
+    "@types/node": "^24.13.3",
+    "@types/react": "^19.2.18",
+    "@types/react-dom": "^19.2.7",
+    "@vitejs/plugin-react": "^6.1.1",
+    "gh-pages": "^6.3.0",
+    "oxlint": "^1.81.0",
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8",
+    "typescript": "~6.0.2",
+    "vite": "^8.3.0"
+  }
+}
