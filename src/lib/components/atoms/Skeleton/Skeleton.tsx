@@ -1,5 +1,5 @@
 import type { HTMLAttributes } from 'react';
-import { useTheme } from 'styled-components';
+import { useTheme } from '../../../theme/styled';
 import type { RadiusToken } from '../../../theme/theme';
 import { SkeletonRoot } from './Skeleton.styles';
 

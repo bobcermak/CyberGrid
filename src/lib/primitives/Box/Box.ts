@@ -1,4 +1,5 @@
-import { styled, css, type DefaultTheme } from 'styled-components';
+import { css, type DefaultTheme } from 'styled-components';
+import { styled } from '../../theme/styled';
 import type { ColorToken, RadiusToken, SpaceToken } from '../../theme/theme';
 
 type CssLength = number | string;

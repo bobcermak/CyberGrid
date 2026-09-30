@@ -1,5 +1,4 @@
-import './styled';
-
+export { resolveTheme, useTheme } from './styled';
 export { lightTheme, darkTheme, themes, typography, foundations } from './theme';
 export type {
   Theme,

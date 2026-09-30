@@ -1,4 +1,5 @@
-import { styled, css, keyframes } from 'styled-components';
+import { css, keyframes } from 'styled-components';
+import { styled } from '../../../theme/styled';
 import type { ColorToken } from '../../../theme/theme';
 import { revealStyles } from '../../../utils/skeleton';
 

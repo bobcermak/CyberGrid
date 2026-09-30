@@ -1,4 +1,5 @@
-import { styled, css } from 'styled-components';
+import { css } from 'styled-components';
+import { styled } from '../../../theme/styled';
 import { revealStyles, skeletonText } from '../../../utils/skeleton';
 
 export const DataTableRoot = styled.div<{ $reveal?: boolean }>`

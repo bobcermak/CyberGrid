@@ -1,4 +1,4 @@
-import { styled } from 'styled-components';
+import { styled } from '../../../theme/styled';
 
 export const CustomTooltipContainer = styled.div`
   background-color: ${({ theme }) => theme.colors.colorPrimaryDark};

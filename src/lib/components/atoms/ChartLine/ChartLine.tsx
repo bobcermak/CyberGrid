@@ -1,5 +1,5 @@
 import { useId } from 'react';
-import { useTheme } from 'styled-components';
+import { useTheme } from '../../../theme/styled';
 import { Area } from 'recharts';
 import { ChartMarker } from '../ChartMarker';
 

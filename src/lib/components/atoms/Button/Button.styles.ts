@@ -1,4 +1,5 @@
-import { styled, css, type DefaultTheme } from 'styled-components';
+import { css, type DefaultTheme } from 'styled-components';
+import { styled } from '../../../theme/styled';
 import { Box } from '../../../primitives/Box';
 import { alpha } from '../../../utils/color';
 import { skeletonSurface } from '../../../utils/skeleton';

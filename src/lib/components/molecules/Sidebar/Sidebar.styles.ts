@@ -1,4 +1,4 @@
-import { styled } from 'styled-components';
+import { styled } from '../../../theme/styled';
 
 export const SIDEBAR_WIDTH = { expanded: '264px', collapsed: '80px', compact: '60px' } as const;
 export const COMPACT_QUERY = '(max-width: 380px)';

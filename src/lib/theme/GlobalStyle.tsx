@@ -1,7 +1,8 @@
 import { createGlobalStyle } from 'styled-components';
 import { THEME_SWITCHING_ATTR } from '../utils/switchTheme';
+import { useTheme } from './styled';
 
-export const GlobalStyle = createGlobalStyle`
+const BaseGlobalStyle = createGlobalStyle`
   *,
   *::before,
   *::after {
@@ -68,3 +69,4 @@ export const GlobalStyle = createGlobalStyle`
     }
   }
 `;
+export const GlobalStyle = () => <BaseGlobalStyle theme={useTheme()} />;

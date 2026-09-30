@@ -1,4 +1,4 @@
-import { useTheme } from 'styled-components';
+import { useTheme } from '../../../theme/styled';
 
 export interface ChartMarkerProps {
   cx?: number;

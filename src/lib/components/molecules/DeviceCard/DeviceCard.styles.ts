@@ -1,4 +1,5 @@
-import { styled, type DefaultTheme } from 'styled-components';
+import { type DefaultTheme } from 'styled-components';
+import { styled } from '../../../theme/styled';
 import { visuallyHidden } from '../../../utils/a11y';
 import { alpha } from '../../../utils/color';
 import { getToneColor, type Tone } from '../../../utils/tone';

@@ -1,6 +1,6 @@
 export * from './theme';
 
-export { ThemeProvider, styled, css, keyframes, createGlobalStyle, useTheme } from 'styled-components';
+export { ThemeProvider, styled, css, keyframes, createGlobalStyle } from 'styled-components';
 
 export * from './icons';
 

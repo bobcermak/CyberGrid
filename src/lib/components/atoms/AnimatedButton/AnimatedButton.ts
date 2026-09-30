@@ -1,4 +1,5 @@
-import { styled, keyframes } from 'styled-components';
+import { keyframes } from 'styled-components';
+import { styled } from '../../../theme/styled';
 import { Button } from '../Button';
 import { ButtonSegment } from '../Button/Button.styles';
 import { ArrowSlot } from '../Button/ArrowIcon.styles';

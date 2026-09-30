@@ -1,4 +1,4 @@
-import { useTheme } from 'styled-components';
+import { useTheme } from '../../../theme/styled';
 import { CartesianGrid, XAxis } from 'recharts';
 
 export interface ChartAxisProps {

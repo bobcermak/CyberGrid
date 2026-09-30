@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useTheme } from 'styled-components';
+import { useTheme } from '../../../theme/styled';
 import { AreaChart, Tooltip, ResponsiveContainer } from 'recharts';
 import { ChartAxis } from '../../atoms/ChartAxis';
 import { ChartLine } from '../../atoms/ChartLine';

@@ -1,4 +1,4 @@
-import { styled } from 'styled-components';
+import { styled } from '../../../theme/styled';
 import { skeletonSurface } from '../../../utils/skeleton';
 
 export const SkeletonRoot = styled.span<{ $radius: string }>`

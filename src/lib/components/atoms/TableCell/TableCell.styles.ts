@@ -1,4 +1,5 @@
-import { styled, css } from 'styled-components';
+import { css } from 'styled-components';
+import { styled } from '../../../theme/styled';
 import { alpha } from '../../../utils/color';
 import { revealStyles, skeletonText } from '../../../utils/skeleton';
 

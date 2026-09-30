@@ -1,4 +1,4 @@
-import { styled } from 'styled-components';
+import { styled } from '../../../theme/styled';
 import { alpha } from '../../../utils/color';
 import { revealStyles, skeletonPulse } from '../../../utils/skeleton';
 import { getToneColor, type Tone } from '../../../utils/tone';

@@ -1,4 +1,5 @@
-import { styled, css } from 'styled-components';
+import { css } from 'styled-components';
+import { styled } from '../../../theme/styled';
 import { visuallyHidden } from '../../../utils/a11y';
 
 export const brandStyles = css`

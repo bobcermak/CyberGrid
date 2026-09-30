@@ -1,4 +1,5 @@
-import { styled, css } from 'styled-components';
+import { css } from 'styled-components';
+import { styled } from '../../../theme/styled';
 
 export const labelText = css`
   font-family: ${({ theme }) => theme.fonts.base};
