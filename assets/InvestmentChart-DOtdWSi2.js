@@ -1,0 +1,1 @@
+import{t as e}from"./InvestmentChart-BidoKMmI.js";export{e as InvestmentChart};
