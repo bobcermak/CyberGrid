@@ -39,7 +39,7 @@
     "typecheck": "tsc -b",
     "lint": "oxlint",
     "preview": "vite preview",
-    "predeploy": "tsc -b && vite build --base=/2026-p4a-2026-p4a-web-styled-components-group-7/ && node -e \"require('fs').copyFileSync('dist-docs/index.html','dist-docs/404.html')\"",
+    "predeploy": "tsc -b && vite build --base=/CyberGrid/ && node -e \"require('fs').copyFileSync('dist-docs/index.html','dist-docs/404.html')\"",
     "deploy": "gh-pages -d dist-docs --nojekyll",
     "prepublishOnly": "npm run typecheck && npm run lint && npm run build:lib"
   },

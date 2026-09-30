@@ -4,7 +4,7 @@
 </p>
 
 <p align="center">
-  <a href="https://DOPLNIT-URL-DOKUMENTACE"><strong>🌐 Živá dokumentace</strong></a>
+  <a href="https://bobcermak.github.io/CyberGrid/"><strong>🌐 Live demo</strong></a>
   &nbsp;·&nbsp;
   <a href="https://www.figma.com/design/din8h5ZRqVictS0beOSx8Y/Styled-Components?node-id=34-90&p=f&t=Ny375qpCWwesjBYa-0"><strong>🎨 Figma</strong></a>
   &nbsp;·&nbsp;
