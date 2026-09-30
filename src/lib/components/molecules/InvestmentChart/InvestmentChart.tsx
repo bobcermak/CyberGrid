@@ -110,7 +110,8 @@ export const InvestmentChart = <P extends string = string>({
         <ResponsiveContainer>
           <AreaChart data={points} margin={{ top: 20, right: 0, left: 0, bottom: 0 }}>
             <ChartAxis dataKey="name" />
-            <Tooltip content={ChartTooltip} cursor={{ stroke: theme.colors.colorYellow, strokeWidth: 1 }} />
+            <Tooltip
+              content={(props) => <ChartTooltip {...props} formatValue={formatTotal} />} cursor={{ stroke: theme.colors.colorYellow, strokeWidth: 1 }} />
             <ChartLine dataKey="value" />
           </AreaChart>
         </ResponsiveContainer>

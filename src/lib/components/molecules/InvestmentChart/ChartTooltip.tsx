@@ -1,14 +1,15 @@
 import type { TooltipContentProps } from 'recharts';
 import { CustomTooltipContainer, TooltipDate, TooltipValue } from './ChartTooltip.styles';
 
-export const ChartTooltip = ({ active, payload, label }: TooltipContentProps) => {
+export interface ChartTooltipProps extends TooltipContentProps {
+  formatValue: (value: number) => string;
+}
+export const ChartTooltip = ({ active, payload, label, formatValue }: ChartTooltipProps) => {
   if (active && payload && payload.length) {
     return (
       <CustomTooltipContainer>
         <TooltipDate>{label}</TooltipDate>
-        <TooltipValue>
-          ${Number(payload[0].value).toLocaleString('en-US', { minimumFractionDigits: 2 })}
-        </TooltipValue>
+        <TooltipValue>{formatValue(Number(payload[0].value))}</TooltipValue>
       </CustomTooltipContainer>
     );
   }

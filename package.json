@@ -1,6 +1,6 @@
 {
   "name": "remiho-klubik-cyber-components",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "description": "CyberGrid - cyberpunková knihovna komponent pro energetický dashboard (React + styled-components, light/dark, container queries).",
   "type": "module",
   "files": [
