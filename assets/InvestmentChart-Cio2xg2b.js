@@ -1,1 +1,0 @@
-import{t as e}from"./InvestmentChart-C4SlZwoD.js";export{e as InvestmentChart};
