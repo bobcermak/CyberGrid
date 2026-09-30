@@ -3,6 +3,7 @@ import { getToneColor, type Tone } from '../../../utils/tone';
 import { revealStyles } from '../../../utils/skeleton';
 
 export const ProgressRoot = styled.div<{ $reveal?: boolean }>`
+  font-family: ${({ theme }) => theme.fonts.base};
   ${({ $reveal }) => $reveal && revealStyles}
   display: grid;
   gap: ${({ theme }) => theme.space.xxs};

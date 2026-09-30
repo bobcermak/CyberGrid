@@ -1,6 +1,6 @@
 {
   "name": "remiho-klubik-cyber-components",
-  "version": "0.1.4",
+  "version": "0.1.6",
   "description": "CyberGrid - cyberpunková knihovna komponent pro energetický dashboard (React + styled-components, light/dark, container queries).",
   "type": "module",
   "files": [
@@ -48,8 +48,7 @@
     "react-dom": "^19.0.0"
   },
   "dependencies": {
-    "recharts": "^3.10.1",
-    "styled-components": "^6.1.0"
+    "recharts": "^3.10.1"
   },
   "devDependencies": {
     "@phosphor-icons/react": "^2.1.10",
@@ -61,6 +60,7 @@
     "oxlint": "^1.81.0",
     "react": "^19.2.8",
     "react-dom": "^19.2.8",
+    "styled-components": "^6.1.0",
     "typescript": "~6.0.2",
     "vite": "^8.3.0"
   }

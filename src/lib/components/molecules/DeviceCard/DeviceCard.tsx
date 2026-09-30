@@ -1,4 +1,5 @@
 import { useId, type HTMLAttributes, type ReactNode } from 'react';
+import { BoltIcon } from '../../../icons';
 import { ArrowIcon } from '../../atoms/Button';
 import { Gauge, type GaugeProps } from '../../atoms/Gauge';
 import { IconButton } from '../../atoms/IconButton';
@@ -9,16 +10,17 @@ import { useControllableState } from '../../../hooks/useControllableState';
 import { toRatio } from '../../../utils/math';
 import { resolveTone, type Tone } from '../../../utils/tone';
 import DeviceCardTitle, { type HeadingLevel } from './DeviceCardTitle';
+import { deviceCardDefaults, resolvePart } from './DeviceCard.defaults';
 import { DeviceCardBody, DeviceCardCollapse, DeviceCardControls, DeviceCardHeader, DeviceCardRoot, GaugeSlot, ToggleArrow } from './DeviceCard.styles';
 
 export type DeviceCardProps = Omit<HTMLAttributes<HTMLElement>, 'title'> & {
-  title: string;
+  title?: string;
   icon?: ReactNode;
   status?: DeviceStatus;
   statusText?: ReactNode;
-  gauge?: GaugeProps;
-  slider?: SliderProps;
-  progress?: ProgressBarProps;
+  gauge?: Partial<GaugeProps> | false;
+  slider?: SliderProps | false;
+  progress?: Partial<ProgressBarProps> | false;
   children?: ReactNode;
   open?: boolean;
   defaultOpen?: boolean;
@@ -28,12 +30,8 @@ export type DeviceCardProps = Omit<HTMLAttributes<HTMLElement>, 'title'> & {
   tone?: Tone;
   loading?: boolean;
 };
-const getCardTone = ({
-  tone,
-  gauge,
-  slider,
-  progress,
-}: Pick<DeviceCardProps, 'tone' | 'gauge' | 'slider' | 'progress'>): Tone => {
+type CardParts = { tone?: Tone; gauge?: GaugeProps; slider?: SliderProps; progress?: ProgressBarProps };
+const getCardTone = ({ tone, gauge, slider, progress }: CardParts): Tone => {
   if (tone) return tone;
   if (gauge?.tone) return resolveTone(gauge.tone, toRatio(gauge.value, gauge.min ?? 0, gauge.max ?? 100));
   if (slider?.tone) {
@@ -46,7 +44,27 @@ const getCardTone = ({
   }
   return 'yellow';
 };
-const DeviceCard = ({ loading = false, tone, title, icon, status, statusText, gauge, slider, progress, children, open: openProp, defaultOpen = true, onOpenChange, collapsible = true, headingLevel, ...rest }: DeviceCardProps) => {
+const DeviceCard = ({
+  loading = false,
+  tone,
+  title = deviceCardDefaults.title,
+  icon = <BoltIcon size={20} />,
+  status = deviceCardDefaults.status,
+  statusText = deviceCardDefaults.statusText,
+  gauge: gaugeProp,
+  slider: sliderProp,
+  progress: progressProp,
+  children,
+  open: openProp,
+  defaultOpen = true,
+  onOpenChange,
+  collapsible = true,
+  headingLevel,
+  ...rest
+}: DeviceCardProps) => {
+  const gauge = resolvePart(gaugeProp, deviceCardDefaults.gauge, { value: deviceCardDefaults.gauge.value });
+  const slider = resolvePart(sliderProp, deviceCardDefaults.slider, {});
+  const progress = resolvePart(progressProp, deviceCardDefaults.progress, { value: deviceCardDefaults.progress.value });
   const id = useId();
   const headingId = `${id}-title`;
   const bodyId = `${id}-body`;

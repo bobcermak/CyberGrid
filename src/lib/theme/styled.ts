@@ -1,6 +1,7 @@
 import { useContext } from 'react';
 import { styled as baseStyled, ThemeContext, type DefaultTheme } from 'styled-components';
 import { lightTheme, type Theme } from './theme';
+import { ensureFonts } from '../utils/fonts';
 
 declare module 'styled-components' {
   export interface DefaultTheme extends Theme {}
@@ -15,9 +16,16 @@ const withDefaultTheme = (component: unknown) => {
   target.defaultProps = { ...target.defaultProps, theme: lightTheme };
   return component;
 };
+const loadFonts = ({ theme }: { theme?: Partial<DefaultTheme> }) => {
+  ensureFonts(resolveTheme(theme).fontsUrl);
+  return {};
+};
 const wrapTemplate = (template: AnyFn): AnyFn =>
   new Proxy(template, {
-    apply: (fn, thisArg, args) => withDefaultTheme(Reflect.apply(fn, thisArg, args)),
+    apply: (fn, thisArg, args) => {
+      const withFonts = (fn as unknown as { attrs: (attrs: typeof loadFonts) => AnyFn }).attrs(loadFonts);
+      return withDefaultTheme(Reflect.apply(withFonts, thisArg, args));
+    },
     get: (fn, key) => {
       const value = Reflect.get(fn, key);
       return chainable.has(key) && typeof value === 'function'

@@ -3,6 +3,7 @@ import { alpha } from '../../../utils/color';
 import { revealStyles, skeletonText } from '../../../utils/skeleton';
 
 export const SettingsFormRoot = styled.form<{ $reveal?: boolean }>`
+  font-family: ${({ theme }) => theme.fonts.base};
   ${({ $reveal }) => $reveal && revealStyles}
   display: grid;
   gap: ${({ theme }) => theme.space.xl};
@@ -23,6 +24,7 @@ export const SettingsFormHeader = styled.header`
 `;
 
 export const SettingsFormTitle = styled.h3<{ $skeleton?: boolean }>`
+  font-family: ${({ theme }) => theme.fonts.headings};
   color: ${({ theme }) => theme.colors.colorYellow};
   font-size: ${({ theme }) => theme.textStyles.h3Text.fontSize};
   line-height: ${({ theme }) => theme.textStyles.h3Text.lineHeight};

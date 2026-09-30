@@ -7,6 +7,7 @@ const THUMB_WIDTH = 40;
 const THUMB_HEIGHT = 20;
 const TRACK_HEIGHT = 16;
 export const SliderRoot = styled.div<{ $reveal?: boolean }>`
+  font-family: ${({ theme }) => theme.fonts.base};
   ${({ $reveal }) => $reveal && revealStyles}
   display: grid;
   gap: ${({ theme }) => theme.space.sm};

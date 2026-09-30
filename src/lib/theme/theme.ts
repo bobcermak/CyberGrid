@@ -38,7 +38,11 @@ const darkColors: ThemeColors = {
   colorGrayLight: '#E5E5E5',
   colorYellowGraph: '#FCEE0A08',
 };
+export const FONTS_URL =
+  'https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Orbitron:wght@400..900&family=Rajdhani:wght@300;400;500;600;700&display=swap';
 export const typography = {
+  /** Stylesheet s fonty, který knihovna sama načte. `null` = nenačítat (vlastní hosting). */
+  fontsUrl: FONTS_URL as string | null,
   fonts: {
     headings: '"Orbitron", sans-serif',
     base: '"Rajdhani", sans-serif',
@@ -147,4 +151,19 @@ export const darkTheme: Theme = {
 export const themes: Record<ThemeMode, Theme> = {
   light: lightTheme,
   dark: darkTheme,
+};
+export type ThemeOverrides = Partial<Omit<Theme, 'colors' | 'fonts'>> & {
+  colors?: Partial<ThemeColors>;
+  fonts?: Partial<Theme['fonts']>;
+};
+export const createTheme = (base: Theme | ThemeMode, overrides: ThemeOverrides = {}): Theme => {
+  const from = typeof base === 'string' ? themes[base] : base;
+  const colors = { ...from.colors, ...overrides.colors };
+  return {
+    ...from,
+    ...overrides,
+    colors,
+    fonts: { ...from.fonts, ...overrides.fonts },
+    shadows: overrides.shadows ?? (overrides.colors ? createShadows(colors) : from.shadows),
+  };
 };

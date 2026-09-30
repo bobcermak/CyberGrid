@@ -1,6 +1,7 @@
 import { createGlobalStyle } from 'styled-components';
 import { THEME_SWITCHING_ATTR } from '../utils/switchTheme';
 import { useTheme } from './styled';
+import { CyberFonts } from './fonts';
 
 const BaseGlobalStyle = createGlobalStyle`
   *,
@@ -69,4 +70,9 @@ const BaseGlobalStyle = createGlobalStyle`
     }
   }
 `;
-export const GlobalStyle = () => <BaseGlobalStyle theme={useTheme()} />;
+export const GlobalStyle = () => (
+  <>
+    <CyberFonts/>
+    <BaseGlobalStyle theme={useTheme()} />
+  </>
+);

@@ -1,29 +1,65 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useTheme } from '../../../theme/styled';
 import { AreaChart, Tooltip, ResponsiveContainer } from 'recharts';
 import { ChartAxis } from '../../atoms/ChartAxis';
 import { ChartLine } from '../../atoms/ChartLine';
 import { Skeleton } from '../../atoms/Skeleton';
 import { useReveal } from '../../../hooks/useReveal';
+import { useControllableState } from '../../../hooks/useControllableState';
 import { ChartTooltip } from './ChartTooltip';
-import { dataByPeriod, periods, type ChartPeriod } from './data';
+import { dataByPeriod, type ChartPoint } from './data';
 import { Amount, ChartCard, ChartHeader, FilterButton, FilterGroup, Title, TitleArea } from './InvestmentChart.styles';
 
 const formatUsd = (value: number) =>
   value.toLocaleString('en-US', { style: 'currency', currency: 'USD' });
-
-export interface InvestmentChartProps {
-  loading?: boolean;
+export interface InvestmentChartSeries {
+  total: number;
+  points: ChartPoint[];
 }
-export const InvestmentChart: React.FC<InvestmentChartProps> = ({ loading = false }) => {
-  const [filter, setFilter] = useState<ChartPeriod>('Month');
+export interface InvestmentChartProps<P extends string = string> {
+  title?: React.ReactNode;
+  data?: Record<P, InvestmentChartSeries>;
+  periods?: P[];
+  period?: P;
+  defaultPeriod?: P;
+  onPeriodChange?: (period: P) => void;
+  formatTotal?: (value: number) => string;
+  height?: number;
+  hideFilters?: boolean;
+  loading?: boolean;
+  className?: string;
+  style?: React.CSSProperties;
+}
+export const InvestmentChart = <P extends string = string>({
+  title = 'Total Investment',
+  data = dataByPeriod as unknown as Record<P, InvestmentChartSeries>,
+  periods = Object.keys(data) as P[],
+  period: periodProp,
+  defaultPeriod,
+  onPeriodChange,
+  formatTotal = formatUsd,
+  height = 300,
+  hideFilters = false,
+  loading = false,
+  className,
+  style,
+}: InvestmentChartProps<P>) => {
+  const [filter, setFilter] = useControllableState<P>(
+    periodProp,
+    defaultPeriod ?? (periods.includes('Month' as P) ? ('Month' as P) : periods[0]),
+  );
   const theme = useTheme();
   const reveal = useReveal(loading);
-  const { total, points } = dataByPeriod[filter];
+  const { total, points } = data[filter] ?? { total: 0, points: [] };
+
+  const selectPeriod = (next: P) => {
+    setFilter(next);
+    onPeriodChange?.(next);
+  };
 
   if (loading) {
     return (
-      <ChartCard aria-busy>
+      <ChartCard aria-busy className={className} style={style}>
         <ChartHeader>
           <TitleArea>
             <Title>
@@ -33,40 +69,44 @@ export const InvestmentChart: React.FC<InvestmentChartProps> = ({ loading = fals
               <Skeleton width={220} height="0.8em" style={{ display: 'inline-block', verticalAlign: 'middle' }} />
             </Amount>
           </TitleArea>
-          <FilterGroup $loading aria-hidden>
-            {periods.map((f) => (
-              <FilterButton key={f} tabIndex={-1}>
-                {f}
-              </FilterButton>
-            ))}
-          </FilterGroup>
+          {!hideFilters && (
+            <FilterGroup $loading aria-hidden>
+              {periods.map((f) => (
+                <FilterButton key={f} tabIndex={-1}>
+                  {f}
+                </FilterButton>
+              ))}
+            </FilterGroup>
+          )}
         </ChartHeader>
-        <Skeleton height={300} radius="md" />
+        <Skeleton height={height} radius="md" />
       </ChartCard>
     );
   }
   return (
-    <ChartCard $reveal={reveal}>
+    <ChartCard $reveal={reveal} className={className} style={style}>
       <ChartHeader>
         <TitleArea>
-          <Title>Total Investment</Title>
-          <Amount>{formatUsd(total)}</Amount>
+          <Title>{title}</Title>
+          <Amount>{formatTotal(total)}</Amount>
         </TitleArea>
-        <FilterGroup>
-          {periods.map((f) => (
-            <FilterButton
-              key={f}
-              type="button"
-              $active={filter === f}
-              aria-pressed={filter === f}
-              onClick={() => setFilter(f)}
-            >
-              {f}
-            </FilterButton>
-          ))}
-        </FilterGroup>
+        {!hideFilters && (
+          <FilterGroup>
+            {periods.map((f) => (
+              <FilterButton
+                key={f}
+                type="button"
+                $active={filter === f}
+                aria-pressed={filter === f}
+                onClick={() => selectPeriod(f)}
+              >
+                {f}
+              </FilterButton>
+            ))}
+          </FilterGroup>
+        )}
       </ChartHeader>
-      <div style={{ width: '100%', height: 300 }}>
+      <div style={{ width: '100%', height }}>
         <ResponsiveContainer>
           <AreaChart data={points} margin={{ top: 20, right: 0, left: 0, bottom: 0 }}>
             <ChartAxis dataKey="name" />

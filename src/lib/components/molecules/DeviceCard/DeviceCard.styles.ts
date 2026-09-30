@@ -13,6 +13,7 @@ const cardShadow = (theme: DefaultTheme, tone: Tone) => {
   return `0 4px 12px ${alpha(color, 0.25)}, inset 0 3px 3px ${alpha(color, 0.25)}`;
 };
 export const DeviceCardRoot = styled.article<{ $open: boolean; $tone: Tone }>`
+  font-family: ${({ theme }) => theme.fonts.base};
   container: device-card / inline-size;
   display: flex;
   flex-direction: column;

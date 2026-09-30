@@ -3,6 +3,7 @@ import { styled } from '../../../theme/styled';
 import { revealStyles, skeletonSurface } from '../../../utils/skeleton';
 
 export const ChartCard = styled.div<{ $reveal?: boolean }>`
+  font-family: ${({ theme }) => theme.fonts.base};
   ${({ $reveal }) => $reveal && revealStyles}
   background-color: ${({ theme }) => theme.colors.bgSurface};
   border-radius: 12px;
@@ -32,6 +33,7 @@ export const Title = styled.h3`
   text-transform: capitalize;
 `;
 export const Amount = styled.h1`
+  font-family: ${({ theme }) => theme.fonts.headings};
   color: ${({ theme }) => theme.colors.colorPrimary};
   font-size: clamp(24px, 8cqi, ${({ theme }) => theme.textStyles.h1Text.fontSize});
   line-height: 1.25;

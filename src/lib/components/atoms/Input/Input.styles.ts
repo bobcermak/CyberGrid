@@ -3,6 +3,7 @@ import { revealStyles, skeletonText } from '../../../utils/skeleton';
 import { alpha } from '../../../utils/color';
 
 export const InputRoot = styled.div<{ $reveal?: boolean }>`
+  font-family: ${({ theme }) => theme.fonts.base};
   ${({ $reveal }) => $reveal && revealStyles}
   display: grid;
   gap: ${({ theme }) => theme.space.xs};
@@ -20,6 +21,7 @@ export const InputLabel = styled.label<{ $skeleton?: boolean }>`
 `;
 
 export const InputControl = styled.input`
+  font-family: ${({ theme }) => theme.fonts.base};
   width: 100%;
   min-height: 41px;
   padding: 0 ${({ theme }) => theme.space.md};

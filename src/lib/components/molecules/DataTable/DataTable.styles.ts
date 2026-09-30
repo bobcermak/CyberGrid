@@ -3,6 +3,7 @@ import { styled } from '../../../theme/styled';
 import { revealStyles, skeletonText } from '../../../utils/skeleton';
 
 export const DataTableRoot = styled.div<{ $reveal?: boolean }>`
+  font-family: ${({ theme }) => theme.fonts.base};
   ${({ $reveal }) => $reveal && revealStyles}
   width: 100%;
   background: ${({ theme }) => theme.colors.bgSurface};

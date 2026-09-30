@@ -3,6 +3,7 @@ import { revealStyles, skeletonText } from '../../../utils/skeleton';
 import { alpha } from '../../../utils/color';
 
 export const CheckBoxLabel = styled.label<{ $reveal?: boolean }>`
+  font-family: ${({ theme }) => theme.fonts.base};
   ${({ $reveal }) => $reveal && revealStyles}
   display: inline-flex;
   align-items: center;
