@@ -20,7 +20,7 @@
   <img alt="styled-components 6" src="https://img.shields.io/badge/styled--components-6-0A0A12?style=flat-square&logo=styledcomponents&logoColor=FF00C8&labelColor=0A0A12" />
   <img alt="TypeScript" src="https://img.shields.io/badge/TypeScript-strict-0A0A12?style=flat-square&logo=typescript&logoColor=FCEE0A&labelColor=0A0A12" />
   <img alt="Vite 8" src="https://img.shields.io/badge/Vite-8-0A0A12?style=flat-square&logo=vite&logoColor=FCEE0A&labelColor=0A0A12" />
-  <a href="https://DOPLNIT-URL-DOKUMENTACE"><img alt="Dokumentace" src="https://img.shields.io/badge/docs-online-FCEE0A?style=flat-square&labelColor=0A0A12" /></a>
+  <a href="https://bobcermak.github.io/CyberGrid/"><img alt="Dokumentace" src="https://img.shields.io/badge/docs-online-FCEE0A?style=flat-square&labelColor=0A0A12" /></a>
 </p>
 
 ---
