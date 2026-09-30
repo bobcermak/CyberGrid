@@ -3,6 +3,7 @@ import { ThemeProvider } from 'styled-components';
 import { ChartLineIcon, GaugeIcon, HouseIcon, SlidersHorizontalIcon, TableIcon } from '@phosphor-icons/react';
 import { GlobalStyle, themes, type SidebarItem } from '../lib';
 import { DocsLayout } from './components/DocsLayout';
+import { ErrorBoundary } from './components/ErrorBoundary';
 import { team } from './content/team';
 import { useRoute } from './hooks/useRoute';
 import { useThemeMode } from './hooks/useThemeMode';
@@ -66,9 +67,11 @@ export const App = () => {
         mode={mode}
         onToggleMode={toggle}
       >
-        <Suspense fallback={null}>
-          <Page />
-        </Suspense>
+        <ErrorBoundary key={route.page}>
+          <Suspense fallback={null}>
+            <Page />
+          </Suspense>
+        </ErrorBoundary>
       </DocsLayout>
     </ThemeProvider>
   );

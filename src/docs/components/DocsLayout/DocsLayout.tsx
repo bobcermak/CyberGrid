@@ -3,14 +3,14 @@ import { MoonIcon, SunIcon } from '@phosphor-icons/react';
 import { BrandMark } from '../BrandMark';
 import { toPath } from '../../hooks/useRoute';
 import { IconButton, Sidebar, type SidebarItem, type ThemeMode } from '../../../lib';
-import pkg from '../../../../package.json';
+import { version } from '../../../../package.json';
 import { Shell, SkipLink, Main, TopBar, Breadcrumb, Content, Version, SidebarSpacer } from './DocsLayout.styles';
 
 const brand = {
   logo: <BrandMark size="1.2em" />,
   label: 'YBERGRID',
   href: toPath(''),
-  'aria-label': 'CyberGrid – přehled',
+  'aria-label': 'CyberGrid - přehled',
 };
 export interface DocsLayoutProps {
   items: SidebarItem[];
@@ -52,7 +52,6 @@ export const DocsLayout = ({
         onCollapsedChange={setCollapsed}
         aria-label="Navigace dokumentace"
         brand={brand}
-        footer={<Version $collapsed={collapsed}>v{pkg.version}</Version>}
       />
       <Main id="main" tabIndex={-1}>
         <TopBar>
@@ -69,6 +68,7 @@ export const DocsLayout = ({
           />
         </TopBar>
         <Content>{children}</Content>
+        <Version>v{version}</Version>
       </Main>
     </Shell>
   );

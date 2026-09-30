@@ -6,16 +6,20 @@ import { ChartLine } from '../../atoms/ChartLine';
 import { Skeleton } from '../../atoms/Skeleton';
 import { useReveal } from '../../../hooks/useReveal';
 import { ChartTooltip } from './ChartTooltip';
-import { data } from './data';
+import { dataByPeriod, periods, type ChartPeriod } from './data';
 import { Amount, ChartCard, ChartHeader, FilterButton, FilterGroup, Title, TitleArea } from './InvestmentChart.styles';
+
+const formatUsd = (value: number) =>
+  value.toLocaleString('en-US', { style: 'currency', currency: 'USD' });
 
 export interface InvestmentChartProps {
   loading?: boolean;
 }
 export const InvestmentChart: React.FC<InvestmentChartProps> = ({ loading = false }) => {
-  const [filter, setFilter] = useState<string>('Month');
+  const [filter, setFilter] = useState<ChartPeriod>('Month');
   const theme = useTheme();
   const reveal = useReveal(loading);
+  const { total, points } = dataByPeriod[filter];
 
   if (loading) {
     return (
@@ -30,7 +34,7 @@ export const InvestmentChart: React.FC<InvestmentChartProps> = ({ loading = fals
             </Amount>
           </TitleArea>
           <FilterGroup $loading aria-hidden>
-            {['Day', 'Week', 'Month'].map((f) => (
+            {periods.map((f) => (
               <FilterButton key={f} tabIndex={-1}>
                 {f}
               </FilterButton>
@@ -46,13 +50,15 @@ export const InvestmentChart: React.FC<InvestmentChartProps> = ({ loading = fals
       <ChartHeader>
         <TitleArea>
           <Title>Total Investment</Title>
-          <Amount>$10,216.53</Amount>
+          <Amount>{formatUsd(total)}</Amount>
         </TitleArea>
         <FilterGroup>
-          {['Day', 'Week', 'Month'].map((f) => (
+          {periods.map((f) => (
             <FilterButton
               key={f}
+              type="button"
               $active={filter === f}
+              aria-pressed={filter === f}
               onClick={() => setFilter(f)}
             >
               {f}
@@ -62,7 +68,7 @@ export const InvestmentChart: React.FC<InvestmentChartProps> = ({ loading = fals
       </ChartHeader>
       <div style={{ width: '100%', height: 300 }}>
         <ResponsiveContainer>
-          <AreaChart data={data} margin={{ top: 20, right: 0, left: 0, bottom: 0 }}>
+          <AreaChart data={points} margin={{ top: 20, right: 0, left: 0, bottom: 0 }}>
             <ChartAxis dataKey="name" />
             <Tooltip content={ChartTooltip} cursor={{ stroke: theme.colors.colorYellow, strokeWidth: 1 }} />
             <ChartLine dataKey="value" />

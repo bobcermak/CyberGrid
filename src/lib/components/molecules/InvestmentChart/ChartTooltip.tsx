@@ -5,7 +5,7 @@ export const ChartTooltip = ({ active, payload, label }: TooltipContentProps) =>
   if (active && payload && payload.length) {
     return (
       <CustomTooltipContainer>
-        <TooltipDate>{label} 12</TooltipDate>
+        <TooltipDate>{label}</TooltipDate>
         <TooltipValue>
           ${Number(payload[0].value).toLocaleString('en-US', { minimumFractionDigits: 2 })}
         </TooltipValue>

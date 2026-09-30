@@ -32,6 +32,7 @@ export const SkipLink = styled.a`
 `;
 
 export const Main = styled.main`
+  position: relative;
   flex: 1 1 auto;
   min-width: 0;
   outline: none;
@@ -75,10 +76,12 @@ export const Content = styled.div`
   padding: clamp(24px, 5vw, 56px) clamp(16px, 4vw, 48px) 96px;
 `;
 
-export const Version = styled.p<{ $collapsed: boolean }>`
+export const Version = styled.p`
+  position: absolute;
+  right: clamp(16px, 4vw, 48px);
+  bottom: 24px;
   font-family: ${({ theme }) => theme.fonts.mono};
   font-size: 11px;
-  text-align: ${({ $collapsed }) => ($collapsed ? 'center' : 'left')};
   color: ${({ theme }) => theme.colors.colorDisabled};
 `;
 
